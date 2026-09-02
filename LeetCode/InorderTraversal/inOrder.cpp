@@ -20,3 +20,30 @@ public:
         return ans;
     }
 };
+
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        if(root == NULL){
+            return ans;
+        }
+        TreeNode* current = root;
+        stack<TreeNode*> st;
+        while(true){
+            if(current != NULL){
+                st.push(current);
+                current = current->left;
+            }else{
+                if(st.empty()){
+                    break;
+                }
+                current = st.top();
+                st.pop();
+                ans.push_back(current->val);
+                current = current->right;
+            }
+        }
+        return ans;
+    }
+};
