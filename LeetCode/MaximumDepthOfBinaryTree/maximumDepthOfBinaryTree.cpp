@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// ###### MY APPROACH ######
 class Solution {
 public:
     void helper(TreeNode* root, int val, int& height){
@@ -27,5 +28,16 @@ public:
         int height = INT_MIN;
         helper(root, 0, height);
         return height;
+    }
+};
+
+// ###### SIMPLER APPROACH ######
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(root == NULL){
+            return 0;
+        }
+        return 1 + max(maxDepth(root->left), maxDepth(root->right));
     }
 };
